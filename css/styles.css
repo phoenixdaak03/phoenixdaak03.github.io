@@ -1,0 +1,192 @@
+/* Color Palet
+#F5F9E9 - ivory/off white
+#36453B - Kombu Green
+#515751 - Ebony
+#596869 - Cadet
+#C2C1A5 - Sage
+#BBAB8B - Khaki Web
+Saddle Brown
+ */
+ 
+
+
+
+
+/*Global Styles
+=========================*/
+html{
+    box-sizing:border-box;
+}
+*,*:before,*:after{
+    box-sizing:inherit;
+}
+
+body{
+    color:#F5F9E9;
+    margin:0;
+    padding:0;
+    font-family: 'Alice', serif;
+    font-size:15px;
+    line-height:1.5;
+}
+img{
+    width:300px;
+}
+
+.clear{
+    clear:both;
+}
+
+a{
+    color: saddlebrown;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+h1{
+    font-size:100px;
+    line-height:1;
+}
+
+h2{
+    font-size:45px;
+    margin:0;
+}
+
+h1, h2{
+    font-family: 'Dancing Script', cursive;
+    font-weight:400; 
+    margin:0;
+}
+
+.content-wrap{
+    max-width: 800px;
+    width:85%;
+    margin:0 auto;
+    padding: 60px 0;
+}
+
+h3{
+    margin-bottom: 0;
+}
+
+.item-details h3 + p {
+    font-style:italic;
+}
+
+.divider > section{
+    border-bottom:1px dashed grey;
+    padding:25px 0;
+}
+
+.divider > section:last-of-type{
+    border-bottom: none;
+}
+
+/* header */
+.main-navigation ul{
+    margin:0;
+    padding: 3rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.main-navigation ul a{
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+}
+
+/*Profile
+=========================*/
+header{
+    background:#36453B;
+    color:#F5F9E9;
+    text-align: center;
+    
+}
+
+/*Portfolio
+=========================*/
+.projects{
+    background:#515751;
+    
+}
+
+.projects a{
+
+}
+
+.projects .btn{
+    background:rgb(139, 69, 19);
+    color:#F5F9E9;
+    padding:8px;
+    border:medium solid grey;
+    border-radius: 12px;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.projects .btn:hover{
+    text-decoration:none;
+    background: rgba(139, 69, 19, 70%)
+}
+
+.project-item{
+    overflow:hidden;
+    border-bottom:1px dashed grey;
+    padding:25px 0;
+}
+
+.project-item img{
+    float:left;
+    margin-right:20px;
+}
+
+.project-item h3{
+    margin-top:0;
+}
+
+
+/*Work Experience
+=========================*/
+.cadet{
+    background:#596869;
+    
+}
+
+.job-item{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
+    overflow:hidden;
+    border-bottom: 1px dashed grey;
+    padding: 25px 0;
+}
+
+/*Education
+=========================*/
+.sage{
+    background:#BBAB8B;
+    color:#36453B;
+    
+}
+
+/*Contact Information
+========================*/
+footer{
+    background:#C2C1A5;
+    color:#36453B;
+    text-align: center;
+}
+
+.contact-list{
+    list-style-type:none;
+    padding:0;
+    display:flex;
+    justify-content:center;
+    display: inline-block;
+}
