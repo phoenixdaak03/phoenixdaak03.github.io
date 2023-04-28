@@ -1,0 +1,164 @@
+import random
+from tkinter import *
+
+
+def run():
+    def generatePassword():
+        password_screen = Tk()
+        password_screen.title("Generate")
+        password_screen.geometry('400x200')
+
+        global website
+
+        website = input.get()
+
+        password_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                            "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",]
+        password_capital = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+                            "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",]
+        password_numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        password_special = ["!", "@", "#", "$", "%"]
+
+        global password
+        global num_passwords
+
+        num_passwords = + 1
+
+        password = ""
+
+        number_of_characters = random.randrange(8, 15)
+
+        password += random.choice(password_capital)
+
+        i = 0
+        for i in range(4):
+            password += random.choice(password_letters)
+
+        password += random.choice(password_special)
+
+        for i in range(number_of_characters):
+            password += random.choice(password_numbers)
+
+        Label(password_screen, text="Your new password for is:",
+              font=('Calibri 10')).pack()
+        Label(password_screen, text=password, font=('Calibri 20')).pack()
+
+        Label(password_screen, text="Do you want to save your passsword?",
+              font=('Calibri 10')).pack()
+
+        button1 = Button(password_screen, width=10,
+                         text="Yes", command=savePassword)
+        button1.pack()
+        button2 = Button(password_screen, width=10, text="No", command=exit)
+        button2.pack()
+
+##############################################################
+
+    def getUsername():
+        user = Tk()
+        user.title("Username")
+        user.geometry('400x200')
+
+        Label(user, text="What is your username for this website?",
+              font=('Calibri 10')).pack()
+        global username
+        username = Entry(user, width=15)
+        username.pack()
+
+        button = Button(user, width=10, text="Next", command=generatePassword)
+        button.pack()
+
+##############################################################
+
+    def savePassword():
+        save_screen = Tk()
+        save_screen.title("Saving Password")
+        save_screen.geometry('400x200')
+        global password
+        user = str(username.get())
+        textfile = open("Passwords.txt", "a")
+        textfile.write(website)
+        textfile.write(":\n\tUsername:")
+        textfile.write(user)
+        textfile.write("\n\tPassword:")
+        textfile.write(password)
+        textfile.write("\n\n")
+        textfile.close()
+
+        Label(save_screen, text=password, font='Calibri 20').pack()
+        Label(save_screen, text="Your password has been saved!",
+              font='Calibri 20').pack()
+        Label(save_screen, text="Do you want to generate another password?",
+              font=('Calibri 10')).pack()
+
+        button1 = Button(save_screen, width=10, text="Yes", command=run)
+        button1.pack()
+        button2 = Button(save_screen, width=10, text="No", command=exit)
+        button2.pack()
+
+##############################################################
+
+    def getWebsite():
+        web = Tk()
+        web.title("Search")
+        web.geometry('400x200')
+        Label(web, text="What is the name of the website you are searching for?",
+              font='Calibri 10').pack()
+        global website
+        website = Entry(web, width=15)
+        website.pack()
+        btn = Button(web, width=10, text="Search", command=search4password)
+        btn.pack()
+
+##############################################################
+
+    def search4password():
+        search = Tk()
+        search.title("Searching")
+        search.geometry('400x200')
+        name = website.get()
+        with open('C:\Password Generator\Passwords.txt', 'r') as file:
+            lines = file.readlines()
+            count = 0
+            for line in lines:
+                count += 1
+                if line.find(name) != -1:
+                    Label(search, text=line).pack()
+                    next_line = lines[count]
+                    Label(search, text=next_line).pack()
+                    next_line = lines[count + 1]
+                    Label(search, text=next_line).pack()
+
+                    Button(search, width=10, text="Search",
+                           command=getWebsite).pack()
+                    Button(search, width=10, text="Generate",
+                           command=run).pack()
+                    Button(search, width=10, text="Cancel", command=exit).pack()
+                    break
+
+
+##############################################################
+
+    main = Tk()
+    main.title("Password Generator")
+    main.geometry('400x200')
+
+    Label(main, text="What website is the password for?",
+          font=('Calibri 10')).pack()
+
+    input = Entry(main, width=15)
+    input.pack()
+
+    btn = Button(main, width=10, text="Next", command=getUsername)
+    btn.pack()
+
+    btn1 = Button(main, width=10, text="Search", command=getWebsite)
+    btn1.pack()
+
+    btn2 = Button(main, width=10, text="Cancel", command=exit)
+    btn2.pack()
+
+    main.mainloop()
+
+
+run()
